@@ -238,22 +238,20 @@ class TestNotificationKit:
 	) -> None:
 		"""测试余额变动模板可正确访问变动前后金额与 delta 展示值"""
 		kit = NotificationKit()
-		data = build_notification_data(
-			[
-				build_account_result(
-					name='账号 1',
-					quota=30.0,
-					used=10.0,
-					balance_changed=True,
-					prev_quota=25.0,
-					prev_used=5.0,
-					quota_delta=5.0,
-					used_delta=5.0,
-					quota_delta_display='+5.0',
-					used_delta_display='+5.0',
-				)
-			]
-		)
+		data = build_notification_data([
+			build_account_result(
+				name='账号 1',
+				quota=30.0,
+				used=10.0,
+				balance_changed=True,
+				prev_quota=25.0,
+				prev_used=5.0,
+				quota_delta=5.0,
+				used_delta=5.0,
+				quota_delta_display='+5.0',
+				used_delta_display='+5.0',
+			)
+		])
 		context = kit._build_context_data(data)
 		template = NotificationTemplate(
 			title='{% if has_balance_changed %}AnyRouter 余额变动提醒{% else %}AnyRouter 签到提醒{% endif %}',

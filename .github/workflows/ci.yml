@@ -78,7 +78,7 @@ jobs:
 
       - name: 📊 上传覆盖率到 Codecov
         if: always()
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage.xml
